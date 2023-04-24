@@ -1,0 +1,32 @@
+<div class="container">
+    <h2>{{galleryData.title}}</h2>
+    <h3>{{galleryData.name}} / {{galleryData.studentNumber}}</h3>
+    <h4>Image {{galleryData.imagesInfo[selectedImage].index+1}}/ 10</h4>
+    <div class="row">
+        <div class="col-md-1">
+            <div class="pull-right" [ngClass]="{'isInactive': flagPrevious, 'isActive' : true}" (click)="loadMainImage(0, 1)">< Previous</div>
+        </div>
+        <div class="col-md-10">
+            <div class="thumbnail">
+                <img src="{{galleryData.imagesInfo[selectedImage].address}}"  class="img-thumbnail">
+                <div class="caption">
+                    <p style="margin: 10px; text-align: center;">{{galleryData.imagesInfo[selectedImage].caption}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <div class="pull-right" [ngClass]="{'isInactive': flagNext, 'isActive' : true}" (click)="loadMainImage(0, 2)">Next ></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <div class="row imageCollection">
+            <div class="col-md-1"></div>
+            <div class="col-md-1" *ngFor="let item of items"><img src="{{galleryData.imagesInfo[item].address}}" id="{{'image'+ item}}" class="img-thumbnail" [ngClass]="{'isActive': galleryData.imagesInfo[item].isActive}" (click)="loadMainImage(item, 3)"></div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
